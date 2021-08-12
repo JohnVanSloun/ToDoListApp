@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 
 import "./form.dart";
-import "./main.dart";
 
 class ListButton extends StatelessWidget {
   final Icon icon;
@@ -22,7 +21,7 @@ class ListButton extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
-                          content: customForm(func),
+                          content: CustomForm(func),
                         );
                       })
                 }
