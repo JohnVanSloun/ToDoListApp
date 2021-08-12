@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:to_do_list/toDoItem.dart';
 
 import "./itemList.dart";
 import "./listButton.dart";
@@ -15,17 +16,25 @@ class ToDoList extends StatefulWidget {
 }
 
 class _ToDoListState extends State<ToDoList> {
-  List<Widget> itemList = [];
+  final Map<String, Widget> items = {};
 
-  void clearList() {
+  void deleteItem(String label) {
     setState(() {
-      itemList = [];
+      items.remove(label);
     });
   }
 
-  void addItem(Widget widget) {
+  void addItem(String text) {
     setState(() {
-      itemList.add(widget);
+      items[text] = ToDoItem(text, deleteItem);
+    });
+  }
+
+  void clearList() {
+    setState(() {
+      for (int i = 0; i < items.length; i++) {
+        items.clear();
+      }
     });
   }
 
@@ -41,7 +50,7 @@ class _ToDoListState extends State<ToDoList> {
           direction: Axis.vertical,
           children: [
             Expanded(
-              child: ItemList(itemList),
+              child: ItemList(items),
             ),
             Container(
               child: Row(
