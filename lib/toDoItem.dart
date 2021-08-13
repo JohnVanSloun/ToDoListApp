@@ -17,6 +17,7 @@ class ToDoItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
+              width: MediaQuery.of(context).size.width * 0.65,
               child: Text(
                 label,
                 style: TextStyle(fontSize: 32),
@@ -39,11 +40,3 @@ class ToDoItem extends StatelessWidget {
         ));
   }
 }
-
-/*Wrap(
-          crossAxisAlignment: WrapCrossAlignment.center,
-          children: [
-            Text(label, style: TextStyle(fontSize: 32),),
-            ElevatedButton(
-                onPressed: () => func(label), child: Icon(Icons.check))
-          ],*/
